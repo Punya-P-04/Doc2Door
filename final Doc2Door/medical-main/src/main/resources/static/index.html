@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doc2Door - Healthcare at Your Doorstep</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Floating Chatbot Button */
+        #chatbot-float-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 26px;
+            text-align: center;
+            line-height: 60px;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Chatbot Popup */
+        #chatbot-popup {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 400px;
+            height: 500px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            display: none;
+            z-index: 1000;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        /* Chatbot Header */
+        #chatbot-header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #chatbot-header button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <h1>Doc2<span>Door</span></h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#sdg">Sustainability</a></li>
+            <li><a href="#emergency">Emergency</a></li>
+            <li class="auth-buttons">
+                <button class="login-btn" onclick="showLoginModal()">Get Started</button>
+            </li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Doc2Door</h1>
+            <p>Your trusted healthcare companion, bringing medical services right to your doorstep</p>
+            <button class="cta-btn" onclick="showLoginModal()">Get Started</button>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="section-header">
+                <h2>About Doc2Door</h2>
+                <p class="subtitle">Revolutionizing Healthcare Delivery</p>
+            </div>
+
+            <div class="mission-statement">
+                <div class="mission-content">
+                    <h3>Transforming Healthcare Access</h3>
+                    <p>In an era where digital transformation is reshaping industries, Doc2Door is on a mission to redefine healthcare accessibility. We believe that quality medical services should be just a click away, ensuring that every individual, regardless of location or circumstances, receives timely and efficient healthcare support.</p>
+                </div>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card vision-card">
+                    <div class="card-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>To revolutionize healthcare delivery by creating a world where quality medical care is accessible to everyone, everywhere...</p>
+                    <div class="vision-highlights">
+                        <span><i class="fas fa-check-circle"></i> Universal Access</span>
+                        <span><i class="fas fa-check-circle"></i> Quality Care</span>
+                        <span><i class="fas fa-check-circle"></i> Innovation</span>
+                    </div>
+                </div>
+
+                <div class="about-card mission-card">
+                    <div class="card-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To bridge the healthcare accessibility gap by connecting patients with healthcare providers through innovative technology...</p>
+                    <div class="mission-highlights">
+                        <span><i class="fas fa-check-circle"></i> Patient-Centric</span>
+                        <span><i class="fas fa-check-circle"></i> Technology-Driven</span>
+                        <span><i class="fas fa-check-circle"></i> Excellence</span>
+                    </div>
+                </div>
+
+                <div class="about-card values-card">
+                    <div class="card-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Our Values</h3>
+                    <p>We are guided by our core values of compassion, innovation, integrity, and excellence...</p>
+                    <div class="values-highlights">
+                        <span><i class="fas fa-check-circle"></i> Compassion</span>
+                        <span><i class="fas fa-check-circle"></i> Innovation</span>
+                        <span><i class="fas fa-check-circle"></i> Integrity</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-text">
+                <p>Doc2Door is a revolutionary healthcare platform that connects patients with healthcare providers at their convenience...</p>
+                <h5>🚀 Empowering lives, one doorstep at a time</h5>
+            </div>
+        </div>
+    </section>
+
+   <section id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <!-- For Patients -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Patient Services">
+                </div>
+                <div class="content">
+                    <i class="fas fa-user"></i>
+                    <h3>For Patients</h3>
+                    <ul class="service-list">
+                        <li>24/7 Doctor Access</li>
+                        <li>Home Medical Visits</li>
+                        <li>Digital Prescriptions</li>
+                        <li>Medicine Delivery</li>
+                        <li>Emergency Care Support</li>
+                    </ul>
+                    <p class="service-highlight">Healthcare at your doorstep, anytime you need it</p>
+                </div>
+            </div>
+
+            <!-- For Doctors -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Doctor Services">
+                </div>
+                <div class="content">
+                    <i class="fas fa-user-md"></i>
+                    <h3>For Doctors</h3>
+                    <ul class="service-list">
+                        <li>Flexible Home Visit Schedules</li>
+                        <li>Additional Income Opportunity</li>
+                        <li>Patient Management System</li>
+                        <li>Digital Prescription Tools</li>
+                        <li>Expanded Patient Network</li>
+                    </ul>
+                    <p class="service-highlight">Optimize your practice with home visits during free time</p>
+                </div>
+            </div>
+
+            <!-- For Medical Stores -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Medical Store Services">
+                </div>
+                <div class="content">
+                    <i class="fas fa-store"></i>
+                    <h3>For Medical Stores</h3>
+                    <ul class="service-list">
+                        <li>Digital Storefront</li>
+                        <li>Increased Visibility</li>
+                        <li>Order Management System</li>
+                        <li>Delivery Integration</li>
+                        <li>Inventory Management</li>
+                    </ul>
+                    <p class="service-highlight">Expand your business reach through our platform</p>
+                </div>
+            </div>
+
+            <!-- Healthcare Ecosystem -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Healthcare Ecosystem">
+                </div>
+                <div class="content">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Connected Healthcare</h3>
+                    <ul class="service-list">
+                        <li>Integrated Healthcare System</li>
+                        <li>Real-time Communication</li>
+                        <li>Secure Data Management</li>
+                        <li>Analytics & Insights</li>
+                        <li>24/7 Support System</li>
+                    </ul>
+                    <p class="service-highlight">Creating a seamless healthcare ecosystem</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sdg" class="sdg">
+        <h2>Our Impact</h2>
+        <div class="sdg-content">
+            <div class="sdg-card">
+                <i class="fas fa-heart"></i>
+                <h3>Healthcare Access</h3>
+                <p>Making quality healthcare accessible to everyone</p>
+            </div>
+            <div class="sdg-card">
+                <i class="fas fa-globe"></i>
+                <h3>Sustainable Care</h3>
+                <p>Reducing carbon footprint through home healthcare</p>
+            </div>
+            <div class="sdg-card">
+                <i class="fas fa-hand-holding-medical"></i>
+                <h3>Community Health</h3>
+                <p>Building healthier communities through accessible care</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="emergency" class="emergency">
+        <h2>Emergency Services</h2>
+        <div class="emergency-content">
+            <div class="emergency-card">
+                <i class="fas fa-phone"></i>
+                <h3>Emergency Hotline</h3>
+                <p>24/7 Emergency: <strong>1800-DOC-2-DOOR</strong></p>
+                <p>Ambulance: <strong>108</strong></p>
+            </div>
+            <div class="emergency-card">
+                <i class="fas fa-hospital"></i>
+                <h3>Instant Care</h3>
+                <p>Immediate medical attention at your location</p>
+                <button class="emergency-btn">Request Now</button>
+            </div>
+            <div class="emergency-card">
+                <i class="fas fa-first-aid"></i>
+                <h3>First Aid Support</h3>
+                <p>Expert guidance for emergency situations</p>
+                <button class="emergency-btn">Get Help</button>
+            </div>
+        </div>
+    </section>
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <div class="login-container">
+                <h2>Choose Login Type</h2>
+                <div class="login-options">
+                    <a href="regPage"><button>Doctor Login</button></a>
+                    <a href="medical-login"><button>Medical Staff Login</button></a>
+                    <a href="NgoPage"><button>NGO Login</button></a>
+                    <a href="PatPage"><button>Patient Login</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: support@doc2door.com</p>
+                <p>Phone: 1800-DOC-2-DOOR</p>
+                <p>Available 24/7</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#emergency">Emergency</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Doc2Door. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Chatbot Button -->
+    <div id="chatbot-float-button" onclick="toggleChatbot()">💬</div>
+
+    <!-- Chatbot Popup -->
+    <div id="chatbot-popup">
+        <div id="chatbot-header">
+            <span>Doc2Door Assistant 🤖</span>
+            <button onclick="toggleChatbot()">×</button>
+        </div>
+        <iframe src="http://localhost:8000/" width="100%" height="100%" style="border: none;"></iframe>
+    </div>
+
+    <script>
+        function toggleChatbot() {
+            const popup = document.getElementById("chatbot-popup");
+            popup.style.display = popup.style.display === "block" ? "none" : "block";
+        }
+    </script>
+    <script src="js/script.js"></script>
+</body>
+</html>
